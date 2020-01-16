@@ -21,13 +21,15 @@ services:
       - php-fpm
     networks:
       - infra
-#networks:
-#  internal:
-#    driver: bridge
-#    ipam:
-#      driver: default
-#      config:
-#        - subnet: 192.168.220.0/28
+  infra-redis:
+    container_name: infra-redis
+    image: tutum/redis
+    environment:
+      - REDIS_PASS="redis"
+    ports:
+      - 6379:6379
+    networks:
+      - infra
 
 networks:
   infra:

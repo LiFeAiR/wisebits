@@ -17,7 +17,8 @@ class Stats
     public function __construct()
     {
         $this->redis = new Client([
-            "host" => 'infra-dc-redis',
+            "host" => 'infra-redis',
+            "password" => 'redis',
         ]);
     }
 
