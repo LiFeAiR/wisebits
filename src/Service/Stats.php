@@ -5,7 +5,10 @@ namespace App\Service;
 
 use Predis\Client;
 
-
+/**
+ * Class Stats
+ * @package App\Service
+ */
 class Stats
 {
     private const KEY = "stats";
@@ -22,6 +25,9 @@ class Stats
         ]);
     }
 
+    /**
+     * @return array
+     */
     public function stats(): array
     {
         $keys = array_keys($this->redis->hgetall(self::KEY));
@@ -33,6 +39,10 @@ class Stats
         return $data;
     }
 
+    /**
+     * @param string $countryCode
+     * @return array
+     */
     public function inc(string $countryCode): array
     {
         $this->redis->hset(self::KEY, $countryCode, 1);
